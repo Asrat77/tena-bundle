@@ -1,0 +1,17 @@
+<%= form_with(model: lab) do |form| %>
+  <% if lab.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(lab.errors.count, "error") %> prohibited this lab from being saved:</h2>
+
+      <ul>
+        <% lab.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

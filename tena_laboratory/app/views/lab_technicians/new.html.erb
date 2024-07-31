@@ -1,0 +1,15 @@
+<%= form_with(model: @lab_technician, local: true, html: { class: "nifty_form" }) do |f| %>
+  <div>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :contact_info, "Contact Information" %>
+    <%= f.text_field :contact_info %>
+  </div>
+
+  <div>
+    <%= f.submit "Create" %>
+  </div>
+<% end %>

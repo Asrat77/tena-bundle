@@ -1,0 +1,30 @@
+<%= form_with(model: @lab_test, local: true, html: { class: "nifty_form" }) do |f| %>
+  <div>
+    <%= f.label :date, "Date" %>
+    <%= f.date_field :date %>
+  </div>
+
+  <div>
+    <%= f.label :result, "Result" %>
+    <%= f.text_field :result %>
+  </div>
+
+  <div>
+    <%= f.label :status, "Status" %>
+    <%= f.text_field :status %>
+  </div>
+
+  <div>
+    <%= f.label :lab_technician_id, "Lab Technician ID" %>
+    <%= f.number_field :lab_technician_id %>
+  </div>
+
+  <div>
+    <%= f.label :patient_id, "Patient ID" %>
+    <%= f.number_field :patient_id %>
+  </div>
+
+  <div>
+    <%= f.submit "Create" %>
+  </div>
+<% end %>

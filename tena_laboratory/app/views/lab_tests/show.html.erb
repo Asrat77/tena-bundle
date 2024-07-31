@@ -1,0 +1,33 @@
+<h1>Lab Test Details</h1>
+
+<p style="color: green"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @lab_test.date %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @lab_test.result %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @lab_test.status %>
+</p>
+
+<p>
+  <strong>Lab Technician ID:</strong>
+  <%= @lab_test.lab_technician_id %>
+</p>
+
+<p>
+  <strong>Patient ID:</strong>
+  <%= @lab_test.patient_id %>
+</p>
+
+<div>
+  <%= link_to "Edit this lab_test", edit_lab_test_path(@lab_test) %> |
+  <%= link_to "Back to lab tests", lab_tests_path %>
+</div>

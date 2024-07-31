@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @lab_technician.name %>
+</p>
+
+<p>
+  <strong>Contact Information:</strong>
+  <%= @lab_technician.contact_info %>
+</p>
+
+
+<div>
+  <%= link_to "Edit this lab technician", edit_lab_technician_path(@lab_technician) %> |
+  <%= link_to "Back to lab technicians", lab_technicians_path %>
+</div>
