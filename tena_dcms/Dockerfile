@@ -31,6 +31,7 @@ COPY . .
 # Create necessary directories and set permissions
 RUN mkdir -p /storage && chown -R 1000:1000 /storage
 
-# Expose port and define the default command
-EXPOSE 3000
-CMD ["./bin/rails", "server", "-b", "0.0.0.0"]
+# Run database migrations
+RUN bundle exec rails db:migrate
+
+CMD ["bin/rails", "server", "-b", "0.0.0.0"]

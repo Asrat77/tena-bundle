@@ -1,36 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<h1>Patient Details</h1>
 
-<p>
-  <strong>First Name:</strong>
-  <%= @patient.first_name %>
-</p>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= "#{@patient.first_name} #{@patient.last_name}" %></h5>
+    <p class="card-text"><strong>Mobile Number:</strong> <%= @patient.mobile_number %></p>
+    <p class="card-text"><strong>Email:</strong> <%= @patient.email %></p>
+    <p class="card-text"><strong>Gender:</strong> <%= @patient.gender %></p>
+    <p class="card-text"><strong>Doctor:</strong> <%= @patient.doctor.name if @patient.doctor %></p>
+  </div>
+</div>
 
-<p>
-  <strong>Last Name:</strong>
-  <%= @patient.last_name %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @patient.gender %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @patient.email %>
-</p>
-
-<p>
-  <strong>Phone Number:</strong>
-  <%= @patient.mobile_number %>
-</p>
-
-<p>
-  <strong>Doctor Name:</strong>
-  <%= @patient.doctor.name %> <!-- Assuming a `doctor` association exists -->
-</p>
-
-<div>
-  <%= link_to "Edit this patient", edit_patient_path(@patient) %> |
-  <%= link_to "Back to patients", patients_path %>
+<div class="mt-3">
+  <%= link_to 'Edit', edit_patient_path(@patient), class: 'btn btn-warning' %>
+  <%= link_to 'Back', patients_path, class: 'btn btn-secondary' %>
 </div>

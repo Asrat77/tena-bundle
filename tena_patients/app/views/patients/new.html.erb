@@ -1,35 +1,5 @@
-<%= form_with(model: @patient, local: true, html: { class: "nifty_form" }) do |f| %>
-  <div>
-    <%= f.label :first_name, "First Name" %>
-    <%= f.text_field :first_name %>
-  </div>
+<h1>New Patient</h1>
 
-  <div>
-    <%= f.label :last_name, "Last Name" %>
-    <%= f.text_field :last_name %>
-  </div>
+<%= render 'form', patient: @patient %>
 
-  <div>
-    <%= f.label :email, "Email" %>
-    <%= f.email_field :email %>
-  </div>
-
-  <div>
-    <%= f.label :mobile_number, "Phone" %>
-    <%= f.text_field :mobile_number %>
-  </div>
-
-  <div>
-    <%= f.label :gender, "Gender" %>
-    <%= f.text_field :gender %>
-  </div>
-
-  <div>
-    <%= f.label :doctor_id, "Doctor" %>
-    <%= f.number_field :doctor_id %>
-  </div>
-
-  <div>
-    <%= f.submit "Create" %>
-  </div>
-<% end %>
+<%= link_to 'Back', patients_path, class: 'btn btn-secondary mt-3' %>
