@@ -1,5 +1,5 @@
 class LabTestsController < ApplicationController
-  before_action :set_lab_test, only: %i[ show edit update destroy ]
+  before_action :set_lab_test, only: %i[show edit update destroy]
 
   # GET /lab_tests or /lab_tests.json
   def index
@@ -25,7 +25,7 @@ class LabTestsController < ApplicationController
 
     respond_to do |format|
       if @lab_test.save
-        format.html { redirect_to lab_test_url(@lab_test), notice: "Lab test was successfully created." }
+        format.html { redirect_to lab_test_url(@lab_test), notice: 'Lab test was successfully created.' }
         format.json { render :show, status: :created, location: @lab_test }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class LabTestsController < ApplicationController
   def update
     respond_to do |format|
       if @lab_test.update(lab_test_params)
-        format.html { redirect_to lab_test_url(@lab_test), notice: "Lab test was successfully updated." }
+        format.html { redirect_to lab_test_url(@lab_test), notice: 'Lab test was successfully updated.' }
         format.json { render :show, status: :ok, location: @lab_test }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,20 @@ class LabTestsController < ApplicationController
     @lab_test.destroy!
 
     respond_to do |format|
-      format.html { redirect_to lab_tests_url, notice: "Lab test was successfully destroyed." }
+      format.html { redirect_to lab_tests_url, notice: 'Lab test was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_lab_test
-      @lab_test = TenaDcms::LabTest.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def lab_test_params
-      params.require(:lab_test).permit(:date, :result, :status, :lab_technician_id, :patient_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_lab_test
+    @lab_test = TenaDcms::LabTest.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def lab_test_params
+    params.require(:lab_test).permit(:date, :result, :status, :lab_technician_id, :patient_id)
+  end
 end

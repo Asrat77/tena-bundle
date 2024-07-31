@@ -1,29 +1,7 @@
-<%= form_with(model: @lab_test, local: true, html: { class: "nifty_form" }) do |f| %>
-  <div>
-    <%= f.label :date, "Date" %>
-    <%= f.date_field :date %>
-  </div>
+<h1>New Lab Test</h1>
 
-  <div>
-    <%= f.label :result, "Result" %>
-    <%= f.text_field :result %>
-  </div>
+<%= render 'form', lab_test: @lab_test %>
 
-  <div>
-    <%= f.label :status, "Status" %>
-    <%= f.text_field :status %>
-  </div>
-
-  <div>
-    <%= f.label :lab_technician_id, "Lab Technician" %>
-    <%= f.collection_select :lab_technician_id, TenaDcms::LabTechnician.all, :id, :name, { prompt: "Select a Lab Technician" }, { class: "form-select" } %>
-  </div>
-
-  <div>
-    <%= f.label :patient_id, "Patient" %>
-    <%= f.collection_select :patient_id, TenaDcms::Patient.all, :id, :full_name, { prompt: "Select a Patient" }, { class: "form-select" } %>
-  </div>
-  <div>
-    <%= f.submit "Create" %>
-  </div>
-<% end %>
+<div class="mt-3">
+  <%= link_to 'Back to Lab Tests', lab_tests_path, class: 'btn btn-secondary' %>
+</div>

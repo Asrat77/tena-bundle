@@ -1,17 +1,48 @@
-<%= form_with(model: lab_test) do |form| %>
+<%= form_with(model: lab_test, local: true, class: 'needs-validation', novalidate: true) do |form| %>
   <% if lab_test.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(lab_test.errors.count, "error") %> prohibited this lab test from being saved:</h2>
-
+    <div class="alert alert-danger">
+      <h4><%= pluralize(lab_test.errors.count, "error") %> prohibited this lab test from being saved:</h4>
       <ul>
-        <% lab_test.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% lab_test.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.label :date, class: 'form-label' %>
+    <%= form.date_field :date, class: 'form-control', required: true %>
+    <div class="invalid-feedback">Date is required</div>
   </div>
+
+  <div class="mb-3">
+    <%= form.label :result, class: 'form-label' %>
+    <%= form.text_field :result, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :status, class: 'form-label' %>
+    <%= form.select :status, options_for_select(['Pending', 'Completed', 'Cancelled']), { include_blank: 'Select Status' }, { class: 'form-select', required: true } %>
+    <div class="invalid-feedback">Status is required</div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :patient_id, class: 'form-label' %>
+    <%= form.collection_select :patient_id, TenaDcms::Patient.all, :id, :first_name, { prompt: 'Select Patient' }, { class: 'form-select', required: true } %>
+    <div class="invalid-feedback">Patient is required</div>
+  </div>
+
+
+
+  <div class="mb-3">
+    <%= form.label :lab_technician_id, class: 'form-label' %>
+    <%= form.collection_select :lab_technician_id, TenaDcms::LabTechnician.all, :id, :name, { prompt: 'Select Lab Technician' }, { class: 'form-select', required: true } %>
+    <div class="invalid-feedback">Lab Technician is required</div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+
 <% end %>
