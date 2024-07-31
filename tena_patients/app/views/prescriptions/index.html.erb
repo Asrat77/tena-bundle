@@ -1,0 +1,9 @@
+<h1>Prescriptions</h1>
+
+<ul>
+  <% @prescriptions.each do |prescription| %>
+    <%= render partial: 'prescription', locals: { prescription: prescription } %>
+  <% end %>
+</ul>
+
+<%= link_to 'Create New Prescription', new_prescription_path, class: 'btn btn-primary' %>

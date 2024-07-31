@@ -1,0 +1,31 @@
+services:
+  tena_dcms:
+    environment:
+      - RAILS_ENV=development
+      # - DATABASE_PATH=/storage/development.sqlite3
+    build:
+      context: ./tena_dcms
+      dockerfile: Dockerfile
+    command: bundle exec rails s -b 0.0.0.0
+    volumes:
+      - db_data:/storage
+    ports:
+      - "3000:3000"
+
+  tena_patients:
+    environment:
+      - RAILS_ENV=development
+      # - DATABASE_PATH=/storage/development.sqlite3
+    build:
+      context: ./tena_patients
+      dockerfile: Dockerfile
+    command: bundle exec rails s -b 0.0.0.0
+    volumes:
+      - db_data:/storage
+    ports:
+      - "3001:3000"
+    depends_on:
+      - tena_dcms
+
+volumes:
+  db_data:

@@ -1,0 +1,30 @@
+<%= form_with(model: @prescription, local: true, html: { class: "nifty_form" }) do |f| %>
+  <div>
+    <%= f.label :date, "Date" %>
+    <%= f.date_field :date %>
+  </div>
+
+  <div>
+    <%= f.label :doctor_note, "Doctor Note" %>
+    <%= f.text_field :doctor_note %>
+  </div>
+
+  <div>
+    <%= f.label :drug_information, "Drug Information" %>
+    <%= f.text_field :drug_information %>
+  </div>
+
+  <div>
+    <%= f.label :doctor_id, "Doctor ID" %>
+    <%= f.number_field :doctor_id %>
+  </div>
+
+  <div>
+    <%= f.label :patient_id, "Patient ID" %>
+    <%= f.number_field :patient_id %>
+  </div>
+
+  <div>
+    <%= f.submit "Create" %>
+  </div>
+<% end %>

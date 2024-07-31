@@ -1,0 +1,33 @@
+<h1>Prescription Details</h1>
+
+<p style="color: green"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @prescription.date %>
+</p>
+
+<p>
+  <strong>Doctor Note:</strong>
+  <%= @prescription.doctor_note %>
+</p>
+
+<p>
+  <strong>Drug Information:</strong>
+  <%= @prescription.drug_information %>
+</p>
+
+<p>
+  <strong>Doctor ID:</strong>
+  <%= @prescription.doctor_id %>
+</p>
+
+<p>
+  <strong>Patient ID:</strong>
+  <%= @prescription.patient_id %>
+</p>
+
+<div>
+  <%= link_to "Edit this prescription", edit_prescription_path(@prescription) %> |
+  <%= link_to "Back to prescriptions", prescriptions_path %>
+</div>

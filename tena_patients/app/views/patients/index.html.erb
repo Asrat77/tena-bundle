@@ -1,0 +1,9 @@
+<h1>Patients</h1>
+
+<ul>
+  <% @patients.each do |patient| %>
+    <%= render partial: 'patient', locals: { patient: patient } %>
+  <% end %>
+</ul>
+
+<%= link_to 'Create New Patient', new_patient_path, class: 'btn btn-primary' %>
