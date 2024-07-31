@@ -15,15 +15,14 @@
   </div>
 
   <div>
-    <%= f.label :lab_technician_id, "Lab Technician ID" %>
-    <%= f.number_field :lab_technician_id %>
+    <%= f.label :lab_technician_id, "Lab Technician" %>
+    <%= f.collection_select :lab_technician_id, TenaDcms::LabTechnician.all, :id, :name, { prompt: "Select a Lab Technician" }, { class: "form-select" } %>
   </div>
 
   <div>
-    <%= f.label :patient_id, "Patient ID" %>
-    <%= f.number_field :patient_id %>
+    <%= f.label :patient_id, "Patient" %>
+    <%= f.collection_select :patient_id, TenaDcms::Patient.all, :id, :full_name, { prompt: "Select a Patient" }, { class: "form-select" } %>
   </div>
-
   <div>
     <%= f.submit "Create" %>
   </div>
