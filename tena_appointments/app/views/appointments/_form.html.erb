@@ -24,7 +24,7 @@
 
   <div class="mb-3">
     <%= form.label :patient_id, class: 'form-label' %>
-    <%= form.collection_select :patient_id, TenaDcms::Patient.all, :id, :full_name, { prompt: 'Select Patient' }, { class: 'form-select', required: true } %>
+    <%= form.collection_select :patient_id, TenaDcms::Patient.all, :id, :first_name, { prompt: 'Select Patient' }, { class: 'form-select', required: true } %>
     <div class="invalid-feedback">Patient is required</div>
   </div>
 
