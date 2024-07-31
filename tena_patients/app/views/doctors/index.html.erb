@@ -1,9 +1,28 @@
 <h1>Doctors</h1>
 
-<ul>
-  <% @doctors.each do |doctor| %>
-    <%= render partial: 'doctor', locals: { doctor: doctor } %>
-  <% end %>
-</ul>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @doctors.each do |doctor| %>
+      <tr>
+        <td><%= doctor.name %></td>
+        <td><%= doctor.phone_number %></td>
+        <td><%= doctor.email %></td>
+        <td>
+          <%= link_to 'View', doctor, class: 'btn btn-sm btn-info' %>
+          <%= link_to 'Edit', edit_doctor_path(doctor), class: 'btn btn-sm btn-warning' %>
+          <%= link_to 'Delete', doctor, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Create New Doctor', new_doctor_path, class: 'btn btn-primary' %>

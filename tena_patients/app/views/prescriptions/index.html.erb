@@ -1,9 +1,30 @@
 <h1>Prescriptions</h1>
 
-<ul>
-  <% @prescriptions.each do |prescription| %>
-    <%= render partial: 'prescription', locals: { prescription: prescription } %>
-  <% end %>
-</ul>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Patient</th>
+      <th>Doctor</th>
+      <th>Drug Information</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @prescriptions.each do |prescription| %>
+      <tr>
+        <td><%= prescription.date %></td>
+        <td><%= "#{prescription.patient.first_name} #{prescription.patient.last_name}" if prescription.patient %></td>
+        <td><%= prescription.doctor.name if prescription.doctor %></td>
+        <td><%= truncate(prescription.drug_information, length: 50) %></td>
+        <td>
+          <%= link_to 'View', prescription, class: 'btn btn-sm btn-info' %>
+          <%= link_to 'Edit', edit_prescription_path(prescription), class: 'btn btn-sm btn-warning' %>
+          <%= link_to 'Delete', prescription, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Create New Prescription', new_prescription_path, class: 'btn btn-primary' %>
