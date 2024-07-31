@@ -1,42 +1,62 @@
-<%= form_with(model: appointment) do |form| %>
+<%= form_with(model: appointment, local: true, class: 'needs-validation', novalidate: true) do |form| %>
   <% if appointment.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
-
+    <div class="alert alert-danger">
+      <h4><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h4>
       <ul>
-        <% appointment.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% appointment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :date, style: "display: block" %>
-    <%= form.date_field :date %>
+  <div class="mb-3">
+    <%= form.label :date, class: 'form-label' %>
+    <%= form.date_field :date, class: 'form-control', required: true %>
+    <div class="invalid-feedback">Date is required</div>
   </div>
 
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.number_field :status %>
+  <div class="mb-3">
+    <%= form.label :status, class: 'form-label' %>
+    <%= form.select :status, options_for_select(['Scheduled', 'Completed', 'Cancelled']), { include_blank: 'Select Status' }, { class: 'form-select', required: true } %>
+    <div class="invalid-feedback">Status is required</div>
   </div>
 
-  <div>
-    <%= form.label :remarks, style: "display: block" %>
-    <%= form.text_field :remarks %>
+  <div class="mb-3">
+    <%= form.label :patient_id, class: 'form-label' %>
+    <%= form.collection_select :patient_id, TenaDcms::Patient.all, :id, :full_name, { prompt: 'Select Patient' }, { class: 'form-select', required: true } %>
+    <div class="invalid-feedback">Patient is required</div>
   </div>
 
-  <div>
-    <%= form.label :doctor_id, style: "display: block" %>
-    <%= form.text_field :doctor_id %>
+  <div class="mb-3">
+    <%= form.label :doctor_id, class: 'form-label' %>
+    <%= form.collection_select :doctor_id, TenaDcms::Doctor.all, :id, :name, { prompt: 'Select Doctor' }, { class: 'form-select', required: true } %>
+    <div class="invalid-feedback">Doctor is required</div>
   </div>
 
-  <div>
-    <%= form.label :patient_id, style: "display: block" %>
-    <%= form.text_field :patient_id %>
+  <div class="mb-3">
+    <%= form.label :remarks, class: 'form-label' %>
+    <%= form.text_area :remarks, class: 'form-control', rows: 3 %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
+
+<script>
+  // Custom JavaScript for form validation
+  (function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+</script>

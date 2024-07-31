@@ -1,27 +1,16 @@
-<div id="<%= dom_id appointment %>">
-  <p>
-    <strong>Date:</strong>
-    <%= appointment.date %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= appointment.status %>
-  </p>
-
-  <p>
-    <strong>Remarks:</strong>
-    <%= appointment.remarks %>
-  </p>
-
-  <p>
-    <strong>Doctor:</strong>
-    <%= appointment.doctor_id %>
-  </p>
-
-  <p>
-    <strong>Patient:</strong>
-    <%= appointment.patient_id %>
-  </p>
-
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">Appointment on <%= appointment.date.strftime('%B %d, %Y') %></h5>
+    <h6 class="card-subtitle mb-2 text-muted">Status: <%= appointment.status %></h6>
+    <p class="card-text">
+      <strong>Patient:</strong> <%= "#{appointment.patient.first_name} #{appointment.patient.last_name}" if appointment.patient %><br>
+      <strong>Doctor:</strong> <%= appointment.doctor.name if appointment.doctor %><br>
+      <strong>Remarks:</strong> <%= truncate(appointment.remarks, length: 100) %>
+    </p>
+    <div class="btn-group" role="group" aria-label="Appointment actions">
+      <%= link_to 'View', appointment, class: 'btn btn-sm btn-info' %>
+      <%= link_to 'Edit', edit_appointment_path(appointment), class: 'btn btn-sm btn-warning' %>
+      <%= link_to 'Delete', appointment, method: :delete, data: { confirm: 'Are you sure you want to delete this appointment?' }, class: 'btn btn-sm btn-danger' %>
+    </div>
+  </div>
 </div>

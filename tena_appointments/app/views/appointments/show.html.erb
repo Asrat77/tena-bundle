@@ -1,10 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<h1>Appointment Details</h1>
 
-<%= render @appointment %>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Appointment on <%= @appointment.date %></h5>
+    <p class="card-text"><strong>Status:</strong> <%= @appointment.status %></p>
+    <p class="card-text"><strong>Patient:</strong> <%= "#{@appointment.patient.first_name} #{@appointment.patient.last_name}" if @appointment.patient %></p>
+    <p class="card-text"><strong>Doctor:</strong> <%= @appointment.doctor.name if @appointment.doctor %></p>
+    <p class="card-text"><strong>Remarks:</strong> <%= @appointment.remarks %></p>
+  </div>
+</div>
 
-<div>
-  <%= link_to "Edit this appointment", edit_appointment_path(@appointment) %> |
-  <%= link_to "Back to appointments", appointments_path %>
-
-  <%= button_to "Destroy this appointment", @appointment, method: :delete %>
+<div class="mt-3">
+  <%= link_to 'Edit', edit_appointment_path(@appointment), class: 'btn btn-warning' %>
+  <%= link_to 'Back to Appointments', appointments_path, class: 'btn btn-secondary' %>
 </div>
