@@ -26,6 +26,20 @@ services:
       - "3001:3000"
     depends_on:
       - tena_dcms
+  tena_appointments:
+    environment:
+      - RAILS_ENV=development
+    build:
+      context: ./tena_appointments
+      dockerfile: Dockerfile
+    command: bundle exec rails s -b 0.0.0.0
+    volumes:
+      - ./tena_appointments:/app
+      - db_data:/storage
+    ports:
+      - "3002:3000"
+    depends_on:
+      - tena_dcms
 
 volumes:
   db_data:
