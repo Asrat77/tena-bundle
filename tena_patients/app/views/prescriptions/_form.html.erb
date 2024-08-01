@@ -22,23 +22,13 @@
     <div class="invalid-feedback">Doctor is required</div>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :medication, class: 'form-label' %>
-    <%= form.text_field :medication, class: 'form-control', required: true %>
-    <div class="invalid-feedback">Medication is required</div>
-  </div>
 
   <div class="mb-3">
-    <%= form.label :dosage, class: 'form-label' %>
-    <%= form.text_field :dosage, class: 'form-control', required: true %>
+    <%= form.label :drug_information, class: 'form-label' %>
+    <%= form.text_field :drug_information, class: 'form-control', required: true %>
     <div class="invalid-feedback">Dosage is required</div>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :frequency, class: 'form-label' %>
-    <%= form.text_field :frequency, class: 'form-control', required: true %>
-    <div class="invalid-feedback">Frequency is required</div>
-  </div>
 
   <div class="mb-3">
     <%= form.label :start_date, class: 'form-label' %>
@@ -52,8 +42,8 @@
   </div>
 
   <div class="mb-3">
-    <%= form.label :notes, class: 'form-label' %>
-    <%= form.text_area :notes, class: 'form-control', rows: 3 %>
+    <%= form.label :doctor_note, class: 'form-label' %>
+    <%= form.text_area :doctor_note, class: 'form-control', rows: 3 %>
   </div>
 
   <div class="mb-3">

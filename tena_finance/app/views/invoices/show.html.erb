@@ -1,0 +1,13 @@
+<h1>Invoice Details</h1>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Invoice #<%= @invoice.id %></h5>
+    <p class="card-text">Generated On: <%= @invoice.generated_on %></p>
+    <p class="card-text">Total Price: <%= number_to_currency(@invoice.total_price) %></p>
+    <p class="card-text">Service Type: <%= @invoice.service_type %></p>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_invoice_path(@invoice), class: 'btn btn-primary mt-3' %>
+<%= link_to 'Back to Invoices', invoices_path, class: 'btn btn-secondary mt-3' %>

@@ -7,6 +7,7 @@
       <th>Patient</th>
       <th>Doctor</th>
       <th>Drug Information</th>
+      <th>Doctor Note</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -17,6 +18,7 @@
         <td><%= "#{prescription.patient.first_name} #{prescription.patient.last_name}" if prescription.patient %></td>
         <td><%= prescription.doctor.name if prescription.doctor %></td>
         <td><%= truncate(prescription.drug_information, length: 50) %></td>
+        <td><%= truncate(prescription.doctor_note, length: 50) %></td>
         <td>
           <%= link_to 'View', prescription, class: 'btn btn-sm btn-info' %>
           <%= link_to 'Edit', edit_prescription_path(prescription), class: 'btn btn-sm btn-warning' %>

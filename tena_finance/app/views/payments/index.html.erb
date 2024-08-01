@@ -1,0 +1,32 @@
+<h1>Payments</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Sub Total</th>
+      <th>Gross Total</th>
+      <th>Deposit Total</th>
+      <th>Doctor</th>
+      <th>Patient</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @payments.each do |payment| %>
+      <tr>
+        <td><%= number_to_currency(payment.sub_total) %></td>
+        <td><%= number_to_currency(payment.gross_total) %></td>
+        <td><%= payment.deposit_type %></td>
+        <td><%= payment.doctor&.name %></td>
+        <td><%= payment.patient&.first_name %></td>
+        <td>
+          <%= link_to 'View', payment, class: 'btn btn-sm btn-info' %>
+          <%= link_to 'Edit', edit_payment_path(payment), class: 'btn btn-sm btn-warning' %>
+          <%= link_to 'Delete', payment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Payment', new_payment_path, class: 'btn btn-primary' %>

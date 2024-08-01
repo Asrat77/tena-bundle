@@ -1,0 +1,34 @@
+<h1>Invoices</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Generated On</th>
+      <th>Total Price</th>
+      <th>Service Type</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @invoices.present? %>
+      <% @invoices.each do |invoice| %>
+        <tr>
+          <td><%= invoice.generated_on %></td>
+          <td><%= number_to_currency(invoice.total_price) %></td>
+          <td><%= invoice.service_type %></td>
+          <td>
+            <%= link_to 'View', invoice_path(invoice), class: 'btn btn-sm btn-info' %>
+            <%= link_to 'Edit', edit_invoice_path(invoice), class: 'btn btn-sm btn-warning' %>
+            <%= link_to 'Delete', invoice_path(invoice), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="4">No invoices found.</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Create New Invoice', new_invoice_path, class: 'btn btn-primary' %>
